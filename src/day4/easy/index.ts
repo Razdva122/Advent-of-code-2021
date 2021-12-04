@@ -7,22 +7,22 @@ import { isWinningTicket, removeElementFromTicket, sumOfElementsInTicket } from 
 
 function main(input: string): number {
   const [firstLine, ...tickets] = input.split('\n\n');
-	const numbers = firstLine.split(',').map(Number);
-	const ticketsNormalized: TTicket[] = tickets.map((el) => el.split('\n')
+  const numbers = firstLine.split(',').map(Number);
+  const ticketsNormalized: TTicket[] = tickets.map((el) => el.split('\n')
     .map((el) => el.split(/\s+/).filter(Boolean).map(Number)) as unknown as TTicket
   );
 
   for (let i = 0; i < numbers.length; i += 1) {
-		let currentNumber = numbers[i];
+    let currentNumber = numbers[i];
 
-		ticketsNormalized.forEach((el) => removeElementFromTicket(el, currentNumber));
+    ticketsNormalized.forEach((el) => removeElementFromTicket(el, currentNumber));
 
-		const winTicket = ticketsNormalized.find((el) => isWinningTicket(el));
+    const winTicket = ticketsNormalized.find((el) => isWinningTicket(el));
 
-		if (winTicket) {
-			return sumOfElementsInTicket(winTicket) * currentNumber;
-		}
-	}
+    if (winTicket) {
+      return sumOfElementsInTicket(winTicket) * currentNumber;
+    }
+  }
 
   return 0;
 }
