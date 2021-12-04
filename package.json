@@ -1,0 +1,21 @@
+{
+  "name": "advent-of-code",
+  "version": "1.0.0",
+  "description": "solve of tasks from advent of code 2021",
+  "main": "index.ts",
+  "scripts": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Razdva122/Advent-of-code-2021.git"
+  },
+  "author": "RazDva122",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Razdva122/Advent-of-code-2021/issues"
+  },
+  "homepage": "https://github.com/Razdva122/Advent-of-code-2021#readme",
+  "dependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "^4.5.0"
+  }
+}
