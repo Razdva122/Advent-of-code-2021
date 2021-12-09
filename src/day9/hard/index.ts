@@ -6,8 +6,8 @@ function main(input: string): number {
   const data = input.split('\n').map((el) => el.split('').map(Number));
   const basins: [number, number][][] = [];
 
-  data.forEach((row, x) => {
-    row.forEach((cell, y) => {
+  data.forEach((row, y) => {
+    row.forEach((cell, x) => {
       if (isLowestNumber(data, x, y)) {
         const basin: [number, number][] = [];
         const stack: [number, number][] = [[x, y]];
@@ -27,9 +27,7 @@ function main(input: string): number {
 
           const closestCells = getClosestCells(data, el[0], el[1]);
 
-          const value = saveGetValue(data, el[0], el[1])!
-
-          const basinCells = closestCells.filter((cell) => isPartOfBasin(data, value, cell[0], cell[1]));
+          const basinCells = closestCells.filter((cell) => isPartOfBasin(data, cell[0], cell[1]));
 
           stack.push(...basinCells);
         }
@@ -61,12 +59,11 @@ function isLowestNumber(data: number[][], x: number, y: number) {
 
 function isPartOfBasin(
   data: number[][],
-  prevValue: number,
   x: number, 
   y: number
 ): boolean {
   const value = saveGetValue(data, x, y);
-  return prevValue + 1 === value && value !== 9;
+  return value !== 9;
 }
 
 function getClosestCells(data: number[][], x: number, y: number): [number, number][] {
@@ -77,15 +74,15 @@ function getClosestCells(data: number[][], x: number, y: number): [number, numbe
 }
 
 function saveGetValue(data: number[][], x: number, y: number): number | null {
-  if (x < 0 || x >= data.length) {
+  if (y < 0 || y >= data.length) {
     return null
   }
 
-  if (y < 0 || y >= data[0].length) {
+  if (x < 0 || x >= data[0].length) {
     return null;
   }
 
-  return data[x][y];
+  return data[y][x];
 }
 
 console.log(`---------------------`);
