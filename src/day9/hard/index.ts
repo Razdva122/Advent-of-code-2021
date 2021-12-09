@@ -25,7 +25,7 @@ function main(input: string): number {
           
           basin.push(el);
 
-          const closestCells = get4ClosestCells(data, el[0], el[1]);
+          const closestCells = getClosestCells(data, el[0], el[1]);
 
           const value = saveGetValue(data, el[0], el[1])!
 
@@ -69,7 +69,7 @@ function isPartOfBasin(
   return prevValue + 1 === value && value !== 9;
 }
 
-function get4ClosestCells(data: number[][], x: number, y: number): [number, number][] {
+function getClosestCells(data: number[][], x: number, y: number): [number, number][] {
   const closestCells = [[0, -1], [0, 1], [-1, 0], [1,0]];
   const closestCoords = closestCells.map<[number, number]>(([xDiff, yDiff]) => [x + xDiff, y + yDiff]);
 
