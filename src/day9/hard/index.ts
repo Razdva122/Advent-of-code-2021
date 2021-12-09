@@ -56,7 +56,7 @@ function isLowestNumber(data: number[][], x: number, y: number) {
 
   const ourValue = saveGetValue(data, x, y)!;
 
-  return values.every((el: any) => el > ourValue);
+  return values.every((el) => el > ourValue);
 }
 
 function isPartOfBasin(
